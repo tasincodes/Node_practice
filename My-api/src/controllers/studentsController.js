@@ -17,3 +17,17 @@ exports.insertStudent = (req, res) => {
 
 }
 
+exports.readStudent = (req, res) => {
+    let query = {};
+    
+    students.find(query)
+        .select("name city")
+        .then(data => {
+            res.status(200).json({ success: true, data: data });
+        })
+        .catch(error => {
+            res.status(400).json({ success: false, error: error.message });
+        });
+};
+
+
