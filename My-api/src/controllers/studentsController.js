@@ -33,27 +33,3 @@ exports.readStudent = (req, res) => {
 //         });
 // }
 
-exports.updateStudent = async (req, res) => {
-    const id = req.params.id;
-    const updateData = req.body;
-
-    try {
-        const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-        await client.connect();
-
-        const db = client.db(dbName);
-        const collection = db.collection('students');
-
-        const result = await collection.updateOne({ _id: new ObjectId(id) }, { $set: updateData });
-
-        if (result.modifiedCount === 1) {
-            res.status(200).json({ status: "success", data: result });
-        } else {
-            res.status(404).json({ status: "fail", message: "Student not found or data is identical" });
-        }
-
-        client.close();
-    } catch (error) {
-        res.status(500).json({ status: "error", error: error.message });
-    }
-};
