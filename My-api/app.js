@@ -38,7 +38,7 @@ app.use(limiter)
 
 let URI = "mongodb://127.0.0.1:27017/school"
 
-mongoose.connect(URI,OPTION,(error)=>{
+mongoose.connect(URI,(error)=>{
     console.log("Connection Success")
     console.log(error)
 })
