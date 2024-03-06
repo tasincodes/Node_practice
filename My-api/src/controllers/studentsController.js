@@ -1,4 +1,6 @@
+
 const students = require('../models/StudentsModel');
+const e = require("express");
 //crud 
 
 
@@ -28,6 +30,19 @@ exports.readStudent = (req, res) => {
         .catch(error => {
             res.status(400).json({ success: false, error: error.message });
         });
-};
+}; 
 
 
+exports.studentUpdate = (req, res) => {
+    let id = req.params.id;
+    let status = req.params.status;
+    let Query = {_id: id};
+    let reqBody = {status: status};
+    TaskModel.updateOne(Query, reqBody, (err, data) => {
+        if (err) {
+            res.status(400).json({status: "Something Wrong", data: err})
+        } else {
+            res.status(200).json({status: "Task Updated", data: data})
+        }
+    })
+}
