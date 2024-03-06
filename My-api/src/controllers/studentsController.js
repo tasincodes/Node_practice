@@ -23,14 +23,11 @@ exports.readStudent = (req, res) => {
 
 exports.updateStudent = (req, res) => {
     let id = req.params.id;
-    console.log(id);
     let updateData = req.body;
-    console.log(updateData);
-    Students.updateOne(id, updateData)
+    Students.findByIdAndUpdate(id, updateData)
         .then(data => {
             res.status(200).json({ status: "success", data: data });
         })
-       
         .catch(error => {
             res.status(400).json({ status: "fail", error: error.message });
         });
