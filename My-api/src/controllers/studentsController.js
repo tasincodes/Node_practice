@@ -1,5 +1,4 @@
 const Students = require('../models/StudentsModel');
-const { MongoClient, ObjectId } = require('mongodb');
 
 exports.insertStudent = (req, res) => {
     let reqBody = req.body;
