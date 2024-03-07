@@ -2,14 +2,17 @@ const Students = require('../models/StudentsModel');
 
 exports.insertStudent = (req, res) => {
     let reqBody = req.body;
+    console.log(reqBody)
     Students.create(reqBody)
         .then(data => {
-            res.status(201).json({ status: "success", data: data });
+            res.status(202).json({ status: "success", data: data });
         })
         .catch(error => {
             res.status(400).json({ status: "fail", data: error });
         });
+        
 }
+
 
 exports.readStudent = (req, res) => {
     Students.find({})
@@ -20,6 +23,7 @@ exports.readStudent = (req, res) => {
             res.status(400).json({ success: false, error: error.message });
         });
 };
+
 
 exports.updateStudent = (req, res) => {
     let id = req.params.id;
