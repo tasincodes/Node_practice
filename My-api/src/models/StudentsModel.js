@@ -10,6 +10,7 @@ const dataSchema = mongoose.Schema({
     remarks : {type:String,default:"No default value"},
     Mobile :{
         type:String,
+        //if you want to use regex for phone number verfication
         // validate: {
         //     validator: (value) =>{
         //         return /(^(\+88|0088)?(01){1}[3456789]{1}(\d){8})$/.test(value)

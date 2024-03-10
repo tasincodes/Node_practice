@@ -15,7 +15,8 @@ exports.insertStudent = (req, res) => {
 
 
 exports.readStudent = (req, res) => {
-    Students.find({})
+    let querry = {name,id}
+    Students.find(querry)
         .then(data => {
             res.status(200).json({ success: true, data: data });
         })
@@ -24,7 +25,7 @@ exports.readStudent = (req, res) => {
         });
 };
 
-
+ 
 exports.updateStudent = (req, res) => {
     let id = req.params.id;
     let updateData = req.body;
