@@ -1,5 +1,6 @@
+var jwt = require("jsonwebtoken")
 module.exports=(req,res,next)=>{
-    exports.decodeWebtoken=(req,res)=>{
+    
         let token = req.headers["token-key"]
         
         jwt.verify(token, 'secretkey123', function(err, decoded) {
@@ -11,5 +12,5 @@ module.exports=(req,res,next)=>{
           }
       });
       
-      }
+      
 }

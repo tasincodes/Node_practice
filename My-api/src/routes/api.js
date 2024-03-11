@@ -8,7 +8,7 @@ const tokenverifyMidlware = require("../middleware/tokenVerifymiddleware");
 const tokenIssuuue= require("../controllers/TokenIssue");
 
 
-router.get("/tokenIssue",tokenverifyMidlware,tokenIssuuue.tokenIssue);
+router.get("/tokenIssue",tokenIssuuue.tokenIssue);
 router.get("/hello-get",tokenverifyMidlware, helloController.hello);
 router.post("/hello-post",tokenverifyMidlware, helloController.hello);
 router.post("/insertStudent",tokenverifyMidlware,studentsController.insertStudent);
